@@ -27,4 +27,12 @@ public class Ball : MonoBehaviour
         ballMoving = true;
         ballRb.velocity = startSpeed;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Block"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
