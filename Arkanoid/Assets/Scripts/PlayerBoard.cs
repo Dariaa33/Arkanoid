@@ -7,8 +7,8 @@ public class PlayerBoard : MonoBehaviour
     [SerializeField]
     private float speed;
   
-    private float limitspos = 4.42f; // limits for Clamp method
-    private float limitsneg = -0.7f;
+    private float limitspos = 6.67f; // limits for Clamp method
+    private float limitsneg = 3.5f;
     void Start()
     {
         
