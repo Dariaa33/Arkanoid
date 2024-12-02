@@ -18,7 +18,5 @@ public class GameOverTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Reloaded");
-
-        GameManager.Instance.Reload();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -8,6 +9,11 @@ public class Ball : MonoBehaviour
     private Vector2 startSpeed;
     private Rigidbody2D ballRb;
     private bool ballMoving;
+    [SerializeField]
+    private float ballSpeed;
+    [SerializeField]
+    Transform playerPaddle;
+
     void Start()
     {
         ballRb = GetComponent<Rigidbody2D>();
@@ -21,11 +27,19 @@ public class Ball : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (ballMoving)
+        {
+            ballRb.velocity = ballRb.velocity.normalized * ballSpeed;
+        }
+    }
+
     private void Moving()
     {
         transform.parent = null;
         ballMoving = true;
-        ballRb.velocity = startSpeed;
+        ballRb.velocity = startSpeed.normalized * ballSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,5 +49,17 @@ public class Ball : MonoBehaviour
             Destroy(collision.gameObject);
             GameManager.Instance.DestroyedBlocks();
         }
+
+        if(collision.gameObject.CompareTag("DeathWall"))
+        {
+            ResetBall();
+        }
+    }
+
+    private void ResetBall()
+    {
+        ballRb.velocity =  Vector2.zero;
+        gameObject.transform.parent = playerPaddle;
+        gameObject.transform.position = new Vector2 (1.065f, -2.108f);
     }
 }

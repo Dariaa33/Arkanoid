@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBoard : MonoBehaviour
 {
+    public static PlayerBoard instance;
+
     [SerializeField]
     private float speed;
   
