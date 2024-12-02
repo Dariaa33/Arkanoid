@@ -33,6 +33,7 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.CompareTag("Block"))
         {
             Destroy(collision.gameObject);
+            GameManager.Instance.DestroyedBlocks();
         }
     }
 }
