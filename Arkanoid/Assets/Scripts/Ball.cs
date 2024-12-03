@@ -53,6 +53,7 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.CompareTag("DeathWall"))
         {
             ResetBall();
+            LifeSystem.instance.ChangeLives();
         }
     }
 

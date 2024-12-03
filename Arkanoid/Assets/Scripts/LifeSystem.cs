@@ -4,33 +4,48 @@ using UnityEngine;
 
 public class LifeSystem : MonoBehaviour
 {
+    public static LifeSystem instance;
     [SerializeField]
     GameObject[] heart;
+    [SerializeField]
+    public int lives;
+
+    [SerializeField]
+    GameObject phone;
+    [SerializeField]
+    GameObject background;
+    [SerializeField]
+    Sprite normalBackground;
+    [SerializeField]
+    Sprite gameOverBackground;
+    [SerializeField]
+    LeanTweenType phoneDownAnimation;
+    [SerializeField]
+    float phoneDownSpeed;
+    SpriteRenderer phoneSpriteRenderer;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Destroy(this);
+    }
+
     void Start()
     {
-        
+        phoneSpriteRenderer = background.GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    public void ChangeLives()
     {
-        /*if (life < 1)
+        lives--;
+        heart[lives].gameObject.SetActive(false);
+        if (lives == 0)
         {
-            Destroy(hearts[0].gameObject);
+            phoneSpriteRenderer.sprite = gameOverBackground;
+            LeanTween.moveLocalY(phone, -10, phoneDownSpeed).setEase(phoneDownAnimation);
         }
-        else if (life < 2)
-        {
-            Destroy(hearts[1].gameObject);
-        }
-        else if (life < 3)
-        {
-            Destroy(hearts[2].gameObject);
-        }*/
     }
-
-    /*public void LooseHeart(int h)
-    {
-        life -= h;
-    }*/
-
-    
 }
