@@ -7,6 +7,7 @@ TagManager:
   - Block
   - LifeSystem
   - DeathWall
+  - Lifes
   layers:
   - Default
   - TransparentFX

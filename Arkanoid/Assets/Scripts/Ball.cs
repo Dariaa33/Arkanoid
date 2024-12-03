@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour
     private float ballSpeed;
     [SerializeField]
     Transform playerPaddle;
-
+    
     void Start()
     {
         ballRb = GetComponent<Rigidbody2D>();
@@ -60,6 +60,7 @@ public class Ball : MonoBehaviour
     {
         ballRb.velocity =  Vector2.zero;
         gameObject.transform.parent = playerPaddle;
-        gameObject.transform.position = new Vector2 (1.065f, -2.108f);
+        gameObject.transform.localPosition = new Vector2 (1.0641f, -2.04f);
+        Debug.Log("Reloaded");
     }
 }

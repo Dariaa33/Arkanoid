@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LifeSystem : MonoBehaviour
 {
-    public GameObject[] hearts;
-    public int life;
+    [SerializeField]
+    GameObject[] heart;
     void Start()
     {
         
@@ -32,12 +32,5 @@ public class LifeSystem : MonoBehaviour
         life -= h;
     }*/
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("LifeSystem"))
-        {
-            Destroy(hearts[0].gameObject);
-
-        }
-    }
+    
 }
