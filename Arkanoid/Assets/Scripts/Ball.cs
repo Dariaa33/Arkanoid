@@ -13,7 +13,12 @@ public class Ball : MonoBehaviour
     private float ballSpeed;
     [SerializeField]
     Transform playerPaddle;
-    
+
+    Audio audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio>();
+    }
     void Start()
     {
         ballRb = GetComponent<Rigidbody2D>();
@@ -48,12 +53,14 @@ public class Ball : MonoBehaviour
         {
             Destroy(collision.gameObject);
             GameManager.Instance.DestroyedBlocks();
+            audioManager.playSFX(audioManager.breakBlock);
         }
 
         if(collision.gameObject.CompareTag("DeathWall"))
         {
             ResetBall();
             LifeSystem.instance.ChangeLives();
+            audioManager.playSFX(audioManager.deathWall);
         }
     }
 

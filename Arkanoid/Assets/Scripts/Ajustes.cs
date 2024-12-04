@@ -6,8 +6,7 @@ public class Ajustes : MonoBehaviour
 {
     [SerializeField]
     GameObject options;
-    /*[SerializeField]
-    float timeAnim;*/
+   
     void Start()
     {
         options.SetActive(false);

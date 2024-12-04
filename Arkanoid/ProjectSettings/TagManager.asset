@@ -8,6 +8,7 @@ TagManager:
   - LifeSystem
   - DeathWall
   - Lifes
+  - Audio
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LifeSystem : MonoBehaviour
 {
@@ -23,9 +24,11 @@ public class LifeSystem : MonoBehaviour
     [SerializeField]
     float phoneDownSpeed;
     SpriteRenderer phoneSpriteRenderer;
-
+    Audio audioManager;
+   
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio>();
         if (instance == null)
         {
             instance = this;
@@ -45,7 +48,9 @@ public class LifeSystem : MonoBehaviour
         if (lives == 0)
         {
             phoneSpriteRenderer.sprite = gameOverBackground;
-            LeanTween.moveLocalY(phone, -10, phoneDownSpeed).setEase(phoneDownAnimation);
+            LeanTween.moveLocalY(phone, -13, phoneDownSpeed).setEase(phoneDownAnimation);
+            audioManager.playGameOver();
+
         }
     }
 }
