@@ -9,6 +9,7 @@ TagManager:
   - DeathWall
   - Lifes
   - Audio
+  - Positions
   layers:
   - Default
   - TransparentFX

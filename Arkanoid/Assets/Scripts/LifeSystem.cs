@@ -25,6 +25,7 @@ public class LifeSystem : MonoBehaviour
     float phoneDownSpeed;
     SpriteRenderer phoneSpriteRenderer;
     Audio audioManager;
+    [SerializeField] GameObject gameOverButtons;
    
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class LifeSystem : MonoBehaviour
     void Start()
     {
         phoneSpriteRenderer = background.GetComponent<SpriteRenderer>();
+        gameOverButtons.SetActive(false);
     }
 
     public void ChangeLives()
@@ -48,9 +50,11 @@ public class LifeSystem : MonoBehaviour
         if (lives == 0)
         {
             phoneSpriteRenderer.sprite = gameOverBackground;
-            LeanTween.moveLocalY(phone, -13, phoneDownSpeed).setEase(phoneDownAnimation);
+            LeanTween.moveLocalY(phone, -13, phoneDownSpeed).setEase(phoneDownAnimation).setOnComplete(() =>
+            {
+                gameOverButtons.SetActive(true);
+            });
             audioManager.playGameOver();
-
         }
     }
 }
