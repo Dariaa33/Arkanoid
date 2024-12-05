@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int bricksAmount;
 
     [SerializeField] Transform brickParent;
+    [SerializeField] GameObject gameOverButtons;
 
     private void Awake()
     {
@@ -37,12 +38,6 @@ public class GameManager : MonoBehaviour
     {
         blocks = GameObject.FindGameObjectsWithTag("Block").Length;
         startMenu.SetActive(true);
-    }
-
-    
-    void Update()
-    {
-        
     }
 
     public void DestroyedBlocks()
@@ -93,4 +88,11 @@ public class GameManager : MonoBehaviour
     {
         pointsText.text = points.ToString();
     }
+
+    public void StartMenu()
+    {
+        startMenu.SetActive(true);
+        gameOverButtons.SetActive(false);
+    }
+
 }

@@ -10,7 +10,6 @@ public class LifeSystem : MonoBehaviour
     GameObject[] heart;
     [SerializeField]
     public int lives;
-
     [SerializeField]
     GameObject phone;
     [SerializeField]
@@ -22,11 +21,15 @@ public class LifeSystem : MonoBehaviour
     [SerializeField]
     LeanTweenType phoneDownAnimation;
     [SerializeField]
+    LeanTweenType phoneUpAnimation;
+    [SerializeField]
+    float phoneUpSpeed;
+    [SerializeField]
     float phoneDownSpeed;
     SpriteRenderer phoneSpriteRenderer;
     Audio audioManager;
     [SerializeField] GameObject gameOverButtons;
-   
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio>();
@@ -56,5 +59,15 @@ public class LifeSystem : MonoBehaviour
             });
             audioManager.playGameOver();
         }
+    }
+
+    public void RestartLvl()
+    {
+        phoneSpriteRenderer = background.GetComponent<SpriteRenderer>();
+        gameOverButtons.SetActive(false);
+        phoneSpriteRenderer.sprite = normalBackground;
+        LeanTween.moveLocalY(phone, -1, phoneUpSpeed).setEase(phoneUpAnimation).setOnComplete(() => { });
+       
+       
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7778412614487546651}
   - component: {fileID: 3915924569232494293}
   - component: {fileID: 905763734185411483}
-  - component: {fileID: 2657264139447542267}
+  - component: {fileID: -4884063224493937847}
   - component: {fileID: 8284626326777510056}
   m_Layer: 0
   m_Name: Brick2
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2657264139447542267
+--- !u!114 &-4884063224493937847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

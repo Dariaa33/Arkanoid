@@ -9,8 +9,8 @@ public class PlayerBoard : MonoBehaviour
     [SerializeField]
     private float speed;
   
-    private float limitspos = 6.67f; // limits for Clamp method
-    private float limitsneg = 3.5f;
+    private float limitsright = 6.67f; // limits for Clamp method
+    private float limitsleft = 3.5f;
     void Start()
     {
         
@@ -22,7 +22,7 @@ public class PlayerBoard : MonoBehaviour
         transform.position += new Vector3(movement * speed * Time.deltaTime, 0f, 0f);
       
         Vector2 positionPlayer = transform.position;
-        positionPlayer.x = Mathf.Clamp(positionPlayer.x + movement * speed * Time.deltaTime, limitsneg, limitspos); // setting limits to player
+        positionPlayer.x = Mathf.Clamp(positionPlayer.x + movement * speed * Time.deltaTime, limitsleft, limitsright); // setting limits to player
         transform.position = positionPlayer;
     }
 }
