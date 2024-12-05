@@ -61,13 +61,17 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        foreach (Transform trans in brickParent.transform)
+        {
+            Destroy(trans.gameObject);
+        }
         startMenu.SetActive(false);
         Timer.instance.timerRunning = true;
         int wantedBricks = bricksAmount;
         for (int i = 0; i < wantedBricks; i++)
         {
-            int selectedPosition = Random.Range(0, bricksAmount);
-            if (positions[selectedPosition].activeSelf == false)
+            int selectedPosition = Random.Range(0, bricksAmount); // to check
+            if (positions[selectedPosition].activeSelf == false) // to check
             {
                 int selectedBlock = Random.Range(0, bricksObjects.Length);
                 GameObject createdObject = Instantiate(bricksObjects[selectedBlock], positions[selectedPosition].transform.position, Quaternion.identity);

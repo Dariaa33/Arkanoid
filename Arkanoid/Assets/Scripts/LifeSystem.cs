@@ -37,7 +37,10 @@ public class LifeSystem : MonoBehaviour
         {
             instance = this;
         }
-        else Destroy(this);
+        else
+        {
+            Destroy(this);
+        }
     }
 
     void Start()
@@ -67,7 +70,7 @@ public class LifeSystem : MonoBehaviour
         gameOverButtons.SetActive(false);
         phoneSpriteRenderer.sprite = normalBackground;
         LeanTween.moveLocalY(phone, -1, phoneUpSpeed).setEase(phoneUpAnimation).setOnComplete(() => { });
-       
+        GameManager.Instance.StartGame(); 
        
     }
 }
